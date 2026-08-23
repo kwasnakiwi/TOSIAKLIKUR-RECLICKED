@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { BASE_URL } from "../utils/endpoints";
 import { useAuth } from "../context/AuthContext";
 
-const SignUp = () => {
+const SignIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,7 +14,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${BASE_URL}/api/player`, {
+      const res = await fetch(`${BASE_URL}/api/player/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,9 +58,9 @@ const SignUp = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button type="submit">Zarejestruj się</button>
+      <button type="submit">Zaloguj się</button>
     </form>
   );
 };
 
-export default SignUp;
+export default SignIn;

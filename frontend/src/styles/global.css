@@ -1,11 +1,4 @@
 body{
   background-color: black;
-}
-
-* {
   color: white;
-}
-
-input, button {
-  color: black;
 }
