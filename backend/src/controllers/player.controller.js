@@ -1,4 +1,5 @@
 const pool = require("../db/pool");
+const bcrypt = require("bcrypt");
 
 const getPlayer = async (req, res) => {
   const id = req.params.id;
@@ -25,11 +26,17 @@ const getPlayer = async (req, res) => {
 };
 
 const createPlayer = async (req, res) => {
-  const { username } = req.body || {};
+  const { username, password } = req.body || {};
 
   if (!username || typeof username !== "string") {
     return res.status(400).json({
       error: "Username is required",
+    });
+  }
+
+  if (!password || typeof password !== "string") {
+    return res.status(400).json({
+      error: "Password is required",
     });
   }
 
@@ -47,12 +54,20 @@ const createPlayer = async (req, res) => {
     });
   }
 
+  if (password.length < 6) {
+    return res.status(400).json({
+      error: "Password must be at least 6 characters long",
+    });
+  }
+
   try {
+    const passwordHash = await bcrypt.hash(password, 10);
+
     const result = await pool.query(
-      `INSERT INTO players (username)
-             VALUES ($1)
-             RETURNING *`,
-      [cleanUsername],
+      `INSERT INTO players (username, password_hash)
+       VALUES ($1, $2)
+       RETURNING id, username, clicks, coins, created_at`,
+      [cleanUsername, passwordHash],
     );
 
     res.status(201).json(result.rows[0]);
