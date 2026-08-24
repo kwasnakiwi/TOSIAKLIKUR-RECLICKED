@@ -13,15 +13,9 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <h1>Witaj, {user?.username}!</h1>
-
-      <p>ID: {user?.id}</p>
-      <p>Clicki: {user?.clicks}</p>
-      <p>Konto utworzone: {new Date(user!.created_at).toLocaleString()}</p>
-
-      <button onClick={logout}>Wyloguj się</button>
-    </div>
+    <>
+      
+    </>
   );
 };
 

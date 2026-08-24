@@ -1,4 +1,24 @@
-body{
-  background-color: black;
+body {
+  background-color: var(--color-bg);
   color: white;
+  font-family: Poppins;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main-container {
+  min-height: 100vh;
+}
+
+.blur-component{
+  height: 100vh;
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }

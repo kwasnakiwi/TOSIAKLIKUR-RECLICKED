@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { BASE_URL } from "../utils/endpoints";
 import { useAuth } from "../context/AuthContext";
+import { images } from "../constants/images";
+import "./sign-in.css";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
@@ -41,25 +43,54 @@ const SignIn = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <span>Username:</span>
-
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-
-      <span>Password:</span>
-
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <button type="submit">Zaloguj się</button>
-    </form>
+    <>
+      <div className="main-container">
+        <form className="form-login" onSubmit={handleSubmit}>
+          <div className="form-top">
+            <img
+              className="form-logo"
+              src={images.appLogo}
+              alt="Logo Aplikacji"
+            />
+            <h1 className="form-top-title">Logowanie</h1>
+          </div>
+          <div className="form-input-box">
+            <label htmlFor="username" className="form-input-label">
+              Nazwa użytkownika
+            </label>
+            <input
+              type="text"
+              name="username"
+              className="form-input"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Nazwa..."
+            />
+          </div>
+          <div className="form-input-box">
+            <label htmlFor="password" className="form-input-label">
+              Hasło
+            </label>
+            <input
+              type="password"
+              name="password"
+              className="form-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Hasło..."
+            />
+          </div>
+          <div className="form-button-box">
+            <button type="submit" className="form-button">
+              Zaloguj się
+            </button>
+          </div>
+          <Link className="form-change-auth" to="/sign-up">
+            Nie masz konta? Załóz je
+          </Link>
+        </form>
+      </div>
+    </>
   );
 };
 

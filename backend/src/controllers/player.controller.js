@@ -12,7 +12,7 @@ const getPlayer = async (req, res) => {
 
     if (result.rows.length === 0) {
       return res.status(404).json({
-        error: "Player not found",
+        error: "Gracz nieznaleziony",
       });
     }
 
@@ -21,7 +21,7 @@ const getPlayer = async (req, res) => {
     console.error(error);
 
     res.status(500).json({
-      error: "Database error",
+      error: "Błąd bazy danych",
     });
   }
 };
@@ -31,13 +31,13 @@ const createPlayer = async (req, res) => {
 
   if (!username || typeof username !== "string") {
     return res.status(400).json({
-      error: "Username is required",
+      error: "Nazwa użytkownika jest wymagana",
     });
   }
 
   if (!password || typeof password !== "string") {
     return res.status(400).json({
-      error: "Password is required",
+      error: "Hasło jest wymagane",
     });
   }
 
@@ -45,19 +45,19 @@ const createPlayer = async (req, res) => {
 
   if (cleanUsername.length < 3) {
     return res.status(400).json({
-      error: "Username must be at least 3 characters long",
+      error: "Nazwa użytkownika musi mieć conajmniej 3 znaki",
     });
   }
 
   if (cleanUsername.length > 20) {
     return res.status(400).json({
-      error: "Username must be at most 20 characters long",
+      error: "Nazwa użytkownika nie może mieć więcej niż 20 znaków",
     });
   }
 
   if (password.length < 6) {
     return res.status(400).json({
-      error: "Password must be at least 6 characters long",
+      error: "Hasło musi mieć conajmniej 6 znaków",
     });
   }
 
@@ -69,7 +69,7 @@ const createPlayer = async (req, res) => {
 
     if (existingPlayer.rows.length > 0) {
       return res.status(409).json({
-        error: "Username already exists",
+        error: "Użytkownik o takiej nazwie już istnieje",
       });
     }
 
@@ -106,7 +106,7 @@ const createPlayer = async (req, res) => {
     console.error(error);
 
     res.status(500).json({
-      error: "Database error",
+      error: "Błąd bazy danych",
     });
   }
 };
@@ -116,13 +116,13 @@ const loginPlayer = async (req, res) => {
 
   if (!username || typeof username !== "string") {
     return res.status(400).json({
-      error: "Username is required",
+      error: "Nazwa użytkownika jest wymagana",
     });
   }
 
   if (!password || typeof password !== "string") {
     return res.status(400).json({
-      error: "Password is required",
+      error: "Hasło jest wymagane",
     });
   }
 
@@ -134,7 +134,7 @@ const loginPlayer = async (req, res) => {
 
     if (result.rows.length === 0) {
       return res.status(401).json({
-        error: "Invalid username or password",
+        error: "Nieprawidłowa nazwa użytkownika lub hasło",
       });
     }
 
@@ -147,7 +147,7 @@ const loginPlayer = async (req, res) => {
 
     if (!passwordCorrect) {
       return res.status(401).json({
-        error: "Invalid username or password",
+        error: "Nieprawidłowa nazwa użytkownika lub hasło",
       });
     }
 
@@ -179,7 +179,7 @@ const loginPlayer = async (req, res) => {
     console.error(error);
 
     res.status(500).json({
-      error: "Database error",
+      error: "Błąd bazy danych",
     });
   }
 };
@@ -198,7 +198,7 @@ const clickPlayer = async (req, res) => {
 
     if (result.rows.length === 0) {
       return res.status(404).json({
-        error: "Player not found",
+        error: "Gracz nieznaleziony",
       });
     }
 
@@ -207,7 +207,7 @@ const clickPlayer = async (req, res) => {
     console.error(error);
 
     res.status(500).json({
-      error: "Database error",
+      error: "Błąd bazy danych",
     });
   }
 };

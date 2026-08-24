@@ -1,0 +1,249 @@
+:root {
+  /* ===== Backgrounds ===== */
+  --color-bg: #0d0b10;
+  --color-bg-secondary: #121016;
+  --color-surface: #18151f;
+  --color-surface-hover: #211d2b;
+  --color-surface-active: #292333;
+
+  /* ===== Primary ===== */
+  --color-primary: #6c3bff;
+  --color-primary-light: #a855f7;
+  --color-primary-dark: #4c1d95;
+
+  /* ===== Accent ===== */
+  --color-accent: #f472b6;
+  --color-accent-light: #fb91c9;
+  --color-accent-dark: #be185d;
+
+  /* ===== Text ===== */
+  --color-text: #f5f3f7;
+  --color-text-secondary: #b8b2c2;
+  --color-text-muted: #777080;
+  --color-text-disabled: #4b4652;
+
+  /* ===== Borders ===== */
+  --color-border: #2a2533;
+  --color-border-light: #393242;
+  --color-border-primary: #6c3bff;
+
+  /* ===== Status ===== */
+  --color-success: #4ade80;
+  --color-warning: #facc15;
+  --color-error: #f87171;
+  --color-info: #60a5fa;
+
+  /* ===== Game ===== */
+  --color-coin: #facc15;
+  --color-energy: #a855f7;
+  --color-xp: #f472b6;
+
+  /* ===== Effects ===== */
+  --glow-primary: 0 0 20px rgba(108, 59, 255, 0.35);
+  --glow-accent: 0 0 20px rgba(244, 114, 182, 0.35);
+  --glow-strong: 0 0 35px rgba(168, 85, 247, 0.5);
+
+  /* ===== Radius ===== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ===== Spacing ===== */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+
+  /* ===== Components ===== */
+  --color-input-bg: #100d16;
+  --color-input-border: #342c42;
+  --color-input-focus: #8b5cf6;
+
+  --color-button-text: #ffffff;
+  --color-button-hover: #7c4dff;
+  --color-button-active: #5b2ee6;
+
+  --color-card-bg: rgba(24, 21, 31, 0.85);
+  --color-card-border: rgba(108, 59, 255, 0.2);
+
+  --color-overlay: rgba(13, 11, 16, 0.75);
+}
+
+.form-login,
+.form-login * {
+  z-index: 3;
+}
+
+.main-container:has(.form-login) {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(13, 11, 16, 0.45), rgba(13, 11, 16, 0.7)),
+    url("/src/assets/images/authBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xl);
+}
+.form-login {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  background: rgba(18, 16, 22, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(108, 59, 255, 0.12);
+  overflow: hidden;
+}
+.form-login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary-light),
+    var(--color-accent),
+    transparent
+  );
+  opacity: 0.8;
+}
+.form-top {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90px;
+  margin-bottom: var(--space-md);
+}
+.form-logo {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 78px;
+  height: 88.5px;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.35));
+}
+.form-top-title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.form-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.form-input-label {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+}
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  color: var(--color-text);
+  background: rgba(13, 11, 16, 0.55);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+.form-input::placeholder {
+  color: var(--color-text-muted);
+}
+.form-input:hover {
+  border-color: var(--color-border-light);
+}
+.form-input:focus {
+  background: rgba(13, 11, 16, 0.75);
+  border-color: var(--color-input-focus);
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, 0.12),
+    0 0 18px rgba(108, 59, 255, 0.12);
+}
+.form-button-box {
+  display: flex;
+  width: 100%;
+  margin-top: var(--space-sm);
+}
+.form-button {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--color-primary-light);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+  color: var(--color-button-text);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(108, 59, 255, 0.2);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+.form-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 8px 25px rgba(108, 59, 255, 0.35),
+    var(--glow-primary);
+}
+.form-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 12px rgba(108, 59, 255, 0.2);
+}
+.form-change-auth {
+  margin-top: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    color 0.15s ease,
+    text-shadow 0.15s ease;
+}
+.form-change-auth:hover {
+  color: var(--color-accent-light);
+  text-shadow: 0 0 12px rgba(244, 114, 182, 0.35);
+}
+
+.form-error{
+  color: var(--color-error);
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+}

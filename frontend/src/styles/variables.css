@@ -57,4 +57,18 @@
   --space-lg: 16px;
   --space-xl: 24px;
   --space-2xl: 32px;
+
+  /* ===== Components ===== */
+  --color-input-bg: #100d16;
+  --color-input-border: #342c42;
+  --color-input-focus: #8b5cf6;
+
+  --color-button-text: #ffffff;
+  --color-button-hover: #7c4dff;
+  --color-button-active: #5b2ee6;
+
+  --color-card-bg: rgba(24, 21, 31, 0.85);
+  --color-card-border: rgba(108, 59, 255, 0.2);
+
+  --color-overlay: rgba(13, 11, 16, 0.75);
 }
