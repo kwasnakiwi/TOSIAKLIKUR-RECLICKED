@@ -4,14 +4,15 @@ const {
   getPlayer,
   createPlayer,
   clickPlayer,
-  loginPlayer,
+  getRanking,
 } = require("../controllers/player.controller");
 
 const router = express.Router();
 
+router.get("/ranking", getRanking);
 router.get("/:id", getPlayer);
+
 router.post("/", createPlayer);
-router.post("/login", loginPlayer);
 router.post("/:id/click", clickPlayer);
 
 module.exports = router;

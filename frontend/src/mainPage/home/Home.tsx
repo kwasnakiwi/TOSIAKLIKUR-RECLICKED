@@ -6,15 +6,17 @@ const Home = () => {
 
   if (!isLoggedIn) {
     return (
-      <div>
-        <h1>Nie jesteś zalogowany</h1>
-      </div>
+      <>
+        <div className="popup-back-overlay" />
+      </>
     );
   }
 
   return (
     <>
-      
+      <div className="main-container">
+        
+      </div>
     </>
   );
 };

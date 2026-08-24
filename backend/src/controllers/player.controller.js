@@ -212,9 +212,58 @@ const clickPlayer = async (req, res) => {
   }
 };
 
+const getRanking = async (req, res) => {
+  const sort = req.query.sort || "clicks";
+  const order = req.query.order || "desc";
+
+  const allowedSorts = {
+    clicks: "clicks",
+    coins: "coins",
+    created_at: "created_at",
+    id: "id",
+  };
+
+  const allowedOrders = {
+    asc: "ASC",
+    desc: "DESC",
+  };
+
+  const sortColumn = allowedSorts[sort];
+  const sortOrder = allowedOrders[order];
+
+  if (!sortColumn) {
+    return res.status(400).json({
+      error: "Nieprawidłowy atrybut rankingu",
+    });
+  }
+
+  if (!sortOrder) {
+    return res.status(400).json({
+      error: "Nieprawidłowy kierunek sortowania",
+    });
+  }
+
+  try {
+    const result = await pool.query(`
+      SELECT id, username, clicks, coins
+      FROM players
+      ORDER BY ${sortColumn} ${sortOrder}
+    `);
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      error: "Błąd bazy danych",
+    });
+  }
+};
+
 module.exports = {
   getPlayer,
   createPlayer,
   clickPlayer,
   loginPlayer,
+  getRanking
 };

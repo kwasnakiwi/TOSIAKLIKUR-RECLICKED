@@ -1,0 +1,210 @@
+.main-container:has(.ranking) {
+  background-image: url(/src/assets/images/rankingBackground.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ranking-top-buttons {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.ranking-top-buttons .left,
+.ranking-top-buttons .right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.ranking-top-button {
+  padding: 9px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.ranking-top-button:hover {
+  color: var(--color-text);
+  background: var(--color-surface-hover);
+}
+
+.ranking-top-button:active {
+  transform: scale(0.97);
+}
+
+.ranking-top-button.selected {
+  color: var(--color-text);
+  background: var(--color-primary);
+  border-color: var(--color-primary-light);
+  box-shadow: var(--glow-primary);
+}
+
+.ranking-top-button.selected:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+.ranking {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: var(--space-2xl);
+  overflow: hidden;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+}
+
+.ranking-player {
+  display: grid;
+  grid-template-columns: 90px 2fr 1fr 1fr;
+  align-items: center;
+  min-height: 58px;
+  border-bottom: 1px solid var(--color-border);
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.ranking-player:last-child {
+  border-bottom: none;
+}
+
+.ranking-player:not(.heading):hover {
+  background: var(--color-surface-hover);
+}
+
+.ranking-player.heading {
+  min-height: 50px;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ranking-player-item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0 var(--space-lg);
+  height: 100%;
+}
+
+.ranking-player-item:not(:last-child) {
+  border-right: 1px solid var(--color-border);
+}
+
+.ranking-player:not(.heading) .ranking-player-item {
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ranking-player-item:first-child {
+  justify-content: center;
+}
+
+.ranking-player-item:nth-child(3),
+.ranking-player-item:nth-child(4) {
+  justify-content: center;
+}
+
+.ranking-player:not(.heading) .ranking-player-item:first-child {
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.ranking-player:not(.heading) .ranking-player-item:nth-child(3) {
+  color: var(--color-text-secondary);
+}
+
+.ranking-player:not(.heading) .ranking-player-item:nth-child(4) {
+  color: var(--color-coin);
+}
+
+.ranking-player:not(.heading) .ranking-player-item:nth-child(2) span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ranking-player:not(.heading):hover .ranking-player-item:nth-child(2) {
+  color: var(--color-primary-light);
+}
+
+.ranking-player:nth-child(2) .ranking-player-item:first-child {
+  color: var(--color-warning);
+}
+
+.ranking-player:nth-child(3) .ranking-player-item:first-child {
+  color: #c0c0c0;
+}
+
+.ranking-player:nth-child(4) .ranking-player-item:first-child {
+  color: #cd7f32;
+}
+
+@media (max-width: 700px) {
+  .main-container:has(.ranking) {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .ranking-top-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ranking-top-buttons .left,
+  .ranking-top-buttons .right {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .ranking-top-button {
+    flex: 1;
+  }
+
+  .ranking-player {
+    grid-template-columns: 55px 2fr 1fr 1fr;
+  }
+
+  .ranking-player-item {
+    padding: 0 var(--space-sm);
+  }
+
+  .ranking-player.heading {
+    font-size: 11px;
+  }
+
+  .ranking-player:not(.heading) .ranking-player-item {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,93 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 100;
+  background: rgba(13, 11, 16, 0.85);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+}
+
+.navbar-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+  margin: 0;
+  padding: 0 28px;
+  gap: 8px;
+}
+
+.navbar-list li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-list li:first-child {
+  margin-right: auto;
+}
+
+.navbar-list a {
+  position: relative;
+  height: 100%;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.navbar-list a:hover {
+  color: var(--color-text);
+  background: rgba(108, 59, 255, 0.08);
+}
+
+.navbar-list a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 18px;
+  right: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-full);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.navbar-list a:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar-logo {
+  display: block;
+  height: 58px;
+  width: auto;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.navbar-list li:first-child a:hover {
+  background: transparent;
+}
+
+.navbar-list li:first-child a::after {
+  display: none;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 10px rgba(108, 59, 255, 0.45));
+}
